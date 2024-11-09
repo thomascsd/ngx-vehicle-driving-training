@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="box">
+    <form [formGroup]="group" (ngSubmit)="save()" #form="ngForm">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder="Text input"
+            formControlName="name"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Mobile</label>
+        <div class="control">
+          <input
+            class="input"
+            type="tel"
+            placeholder="Text input"
+            formControlName="mobile"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Birthday</label>
+        <div class="control">
+          <input
+            class="input"
+            type="tel"
+            placeholder="Text input"
+            formControlName="birthday"
+          />
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
