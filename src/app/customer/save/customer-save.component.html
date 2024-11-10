@@ -11,6 +11,11 @@
             formControlName="name"
           />
         </div>
+        @if (group.controls.name.errors?.["hasError"]) {
+          <p class="help is-danger">
+            {{ group.controls.name.errors?.["message"] }}
+          </p>
+        }
       </div>
       <div class="field">
         <label class="label">Mobile</label>
@@ -22,17 +27,27 @@
             formControlName="mobile"
           />
         </div>
+        @if (group.controls.mobile.errors?.["hasError"]) {
+          <p class="help is-danger">
+            {{ group.controls.mobile.errors?.["message"] }}
+          </p>
+        }
       </div>
       <div class="field">
         <label class="label">Birthday</label>
         <div class="control">
           <input
             class="input"
-            type="tel"
+            type="text"
             placeholder="Text input"
             formControlName="birthday"
           />
         </div>
+        @if (group.controls.birthday.errors?.["hasError"]) {
+          <p class="help is-danger">
+            {{ group.controls.birthday.errors?.["message"] }}
+          </p>
+        }
       </div>
       <div class="field is-grouped">
         <div class="control">
