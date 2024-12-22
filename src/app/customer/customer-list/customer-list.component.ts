@@ -7,11 +7,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { NgxPaginationModule, PaginationInstance } from 'ngx-pagination';
 
 @Component({
-  selector: 'app-customer-list',
-  standalone: true,
-  imports: [NgxPaginationModule, CommonModule, FormsModule],
-  templateUrl: './customer-list.component.html',
-  styleUrl: './customer-list.component.scss',
+    selector: 'app-customer-list',
+    imports: [NgxPaginationModule, CommonModule, FormsModule],
+    templateUrl: './customer-list.component.html',
+    styleUrl: './customer-list.component.scss'
 })
 export class CustomerListComponent {
   customers: Signal<Customer[]>;
