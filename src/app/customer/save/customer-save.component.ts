@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { CustomerService } from '../../core/services/customer.service';
 import {
-  FormGroup,
   FormBuilder,
-  ReactiveFormsModule,
   FormControl,
+  FormGroup,
+  ReactiveFormsModule,
 } from '@angular/forms';
+import { CustomerService } from '../../core/services/customer.service';
 import { Customer } from '../../core/models/customer';
 import { ToForm, utilValidator } from '../../core/util';
 
 @Component({
-    selector: 'app-customer-save',
-    imports: [ReactiveFormsModule],
-    templateUrl: './customer-save.component.html',
-    styleUrl: './customer-save.component.scss'
+  selector: 'app-customer-save',
+  imports: [ReactiveFormsModule],
+  templateUrl: './customer-save.component.html',
+  styleUrl: './customer-save.component.scss',
 })
 export class CustomerComponent {
   group: FormGroup<ToForm<Customer>>;

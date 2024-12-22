@@ -34,61 +34,70 @@
         />
       </div>
     </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-primary" (click)="query()">Query</button>
+      </div>
+    </div>
   </div>
+  <br />
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Birthday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- @for (customer of customers(); track customer | paginate: config;) { -->
+      <tr *ngFor="let customer of customers() | paginate: config">
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.mobile }}</td>
+        <td>{{ customer.birthday }}</td>
+      </tr>
+      <!-- } -->
+    </tbody>
+  </table>
+
+  <pagination-template
+    #p="paginationApi"
+    (pageChange)="config.currentPage = $event"
+  >
+    <nav
+      class="pagination is-centered"
+      role="navigation"
+      aria-label="pagination"
+    >
+      <a class="pagination-previous" [class.disabled]="p.isFirstPage()">
+        @if (!p.isFirstPage()) {
+          <a (click)="p.previous()"> < </a>
+        }
+      </a>
+      <a class="pagination-next" [class.disabled]="p.isLastPage()">
+        @if (!p.isLastPage()) {
+          <a (click)="p.next()"> > </a>
+        }
+      </a>
+
+      <ul class="pagination-list">
+        @for (page of p.pages; track $index) {
+          <li>
+            @if (p.getCurrent() !== page.value) {
+              <a class="pagination-link" (click)="p.setCurrent(page.value)">
+                {{ page.label }}
+              </a>
+            } @else {
+              <a
+                class="pagination-link is-current"
+                (click)="p.setCurrent(page.value)"
+              >
+                {{ page.label }}
+              </a>
+            }
+          </li>
+        }
+      </ul>
+    </nav>
+  </pagination-template>
 </div>
-<br />
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Mobile</th>
-      <th>Birthday</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- @for (customer of customers(); track customer | paginate: config;) { -->
-    <tr *ngFor="let customer of customers() | paginate: config">
-      <td>{{ customer.name }}</td>
-      <td>{{ customer.mobile }}</td>
-      <td>{{ customer.birthday }}</td>
-    </tr>
-    <!-- } -->
-  </tbody>
-</table>
-
-<pagination-template
-  #p="paginationApi"
-  (pageChange)="config.currentPage = $event"
->
-  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" [class.disabled]="p.isFirstPage()">
-      @if (!p.isFirstPage()) {
-        <a (click)="p.previous()"> < </a>
-      }
-    </a>
-    <a class="pagination-next" [class.disabled]="p.isLastPage()">
-      @if (!p.isLastPage()) {
-        <a (click)="p.next()"> > </a>
-      }
-    </a>
-
-    <ul class="pagination-list">
-      @for (page of p.pages; track $index) {
-        <li>
-          @if (p.getCurrent() !== page.value) {
-            <a class="pagination-link" (click)="p.setCurrent(page.value)">
-              {{ page.label }}
-            </a>
-          } @else {
-            <a
-              class="pagination-link is-current"
-              (click)="p.setCurrent(page.value)"
-            >
-              {{ page.label }}
-            </a>
-          }
-        </li>
-      }
-    </ul>
-  </nav>
-</pagination-template>
