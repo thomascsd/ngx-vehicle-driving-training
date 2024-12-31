@@ -20,3 +20,27 @@
     </div>
   </div>
 </div>
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-primary" (click)="query()">Query</button>
+  </div>
+</div>
+<br />
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Mobile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let trainer of trainers() | paginate: config">
+      <td>{{ trainer.name }}</td>
+      <td>{{ trainer.id }}</td>
+      <td>{{ trainer.mobile }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<app-pager></app-pager>
