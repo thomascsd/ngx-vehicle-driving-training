@@ -3,17 +3,18 @@ import { Component, Signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Trainer } from '../core/models/trainer';
-import { TrainerService } from '../core/services/trainer.service';
-import { pagerConfig } from '../shared/util/pager.config';
+import { Trainer } from '../../core/models/trainer';
+import { TrainerService } from '../../core/services/trainer.service';
+import { pagerConfig } from '../../shared/util/pager.config';
+import { PagerComponent } from '../../shared/components/pager/pager.component';
 
 @Component({
-  selector: 'app-trainer',
-  imports: [CommonModule, FormsModule, NgxPaginationModule],
-  templateUrl: './trainer.component.html',
-  styleUrl: './trainer.component.scss',
+  selector: 'app-trainer-list',
+  imports: [CommonModule, FormsModule, NgxPaginationModule, PagerComponent],
+  templateUrl: './trainer-list.component.html',
+  styleUrl: './trainer-list.component.scss',
 })
-export class TrainerComponent {
+export class TrainerListComponent {
   trainers: Signal<Trainer[]>;
   config = pagerConfig;
 
